@@ -17,20 +17,13 @@ Zotero .csl for 《马克思主义研究》（Studies on Marxism）
 ![image](https://files.mdnice.com/user/77043/c66281e4-8618-4404-a822-0d64c68eecb6.png)
 
 
-> 对于中文文献，有个现成的csl可直接套用。而对于英文文献，那个csl支持的不太好。
+对于中文文献，有个现成的csl可直接套用。而对于英文文献，那个csl支持的不太好。
 
 ![英文文献](https://files.mdnice.com/user/77043/ef1c98e9-dfaa-40e8-880f-1fc53f73fd2f.png)
 
 请参考 http://marxism.cass.cn/qknj/mkzyyj/xtzn/202312/t20231219_5718558.shtml
 
 ## 解决策略
-我粗浅修改得到了一个适合《马克思主义研究》英文文献的csl。马克思主义研究英文Chicago.csl。
-
-用法：
-> - 下载，
-> - 双击会自动弹出zotero要给你安装，
-> - 接受就好了。
-##
 我粗浅修改得到了一个适合《马克思主义研究》英文文献的csl。马克思主义研究英文Chicago.csl。
 
 用法：
