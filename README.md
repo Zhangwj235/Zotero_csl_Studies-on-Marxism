@@ -1,5 +1,6 @@
 # Zotero_csl_Studies-on-Marxism
-Zotero .csl for 《马克思主义研究》（Studies on Marxism）
+
+为完成思政课课程论文，修改了一个 Zotero .csl for 《马克思主义研究》（Studies on Marxism）
 
 ## 《马克思主义研究》是中国国内马理论的顶刊
 <img width="1721" height="686" alt="image" src="https://github.com/user-attachments/assets/e6633cd7-66d3-46b6-851c-8ebd332d2ea5" />
