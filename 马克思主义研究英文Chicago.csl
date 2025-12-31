@@ -43,6 +43,14 @@
         <single>vol.</single>
         <multiple>vols.</multiple>
       </term>
+      <term form="short" name="volume">
+        <single>Vol.</single>
+        <multiple>Vols.</multiple>
+      </term>
+      <term form="short" name="issue">
+        <single>No.</single>
+        <multiple>Nos.</multiple>
+      </term>
       <term form="verb-short" name="compiler">comp.</term>
       <term form="verb-short" name="editor">ed.</term>
       <term form="short" name="editor-translator">
@@ -413,16 +421,24 @@
   <!-- 1. Author (CMOS18 13.74-86) -->
   <macro name="author-bib">
     <names variable="composer">
-      <name and="text" delimiter-precedes-last="always" name-as-sort-order="first"/>
+      <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first"/>
       <label form="short" prefix=", "/>
       <substitute>
-        <names variable="author"/>
+        <names variable="author">
+          <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first"/>
+        </names>
         <!-- cf. `interview` model (CMOS18 14.110); if it is desired to prioritize `host` over `guest`, the latter could be encoded as a `contributor` -->
-        <names variable="guest"/>
-        <names variable="host"/>
+        <names variable="guest">
+          <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first"/>
+        </names>
+        <names variable="host">
+          <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first"/>
+        </names>
         <choose>
           <if type="song">
-            <names variable="performer"/>
+            <names variable="performer">
+              <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first"/>
+            </names>
           </if>
         </choose>
         <choose>
@@ -438,39 +454,69 @@
             <text macro="author-title-substitute-container"/>
           </else-if>
         </choose>
-        <names variable="illustrator"/>
+        <names variable="illustrator">
+          <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first"/>
+        </names>
         <choose>
           <if match="none" type="standard">
-            <names variable="editor-translator"/>
-            <names variable="editor"/>
-            <names variable="translator"/>
-            <names variable="collection-editor"/>
+            <names variable="editor-translator">
+              <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first"/>
+            </names>
+            <names variable="editor">
+              <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first"/>
+            </names>
+            <names variable="translator">
+              <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first"/>
+            </names>
+            <names variable="collection-editor">
+              <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first"/>
+            </names>
           </if>
         </choose>
-        <names variable="director"/>
+        <names variable="director">
+          <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first"/>
+        </names>
         <choose>
           <!-- serial `broadcast` prioritizes title (CMOS18 14.165, 14.168) -->
           <if type="broadcast" variable="container-title number title"/>
           <else>
-            <names variable="producer"/>
-            <names variable="executive-producer"/>
-            <names variable="series-creator"/>
+            <names variable="producer">
+              <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first"/>
+            </names>
+            <names variable="executive-producer">
+              <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first"/>
+            </names>
+            <names variable="series-creator">
+              <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first"/>
+            </names>
             <choose>
               <if type="broadcast">
-                <names variable="contributor"/>
+                <names variable="contributor">
+                  <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first"/>
+                </names>
               </if>
             </choose>
           </else>
         </choose>
-        <names variable="editorial-director"/>
-        <names variable="compiler"/>
+        <names variable="editorial-director">
+          <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first"/>
+        </names>
+        <names variable="compiler">
+          <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first"/>
+        </names>
         <choose>
           <if match="any" type="event performance speech">
-            <names variable="chair"/>
-            <names variable="organizer"/>
+            <names variable="chair">
+              <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first"/>
+            </names>
+            <names variable="organizer">
+              <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first"/>
+            </names>
           </if>
         </choose>
-        <names variable="curator"/>
+        <names variable="curator">
+          <name and="text" delimiter=", " delimiter-precedes-last="always" initialize-with=". " name-as-sort-order="first"/>
+        </names>
         <choose>
           <if type="software">
             <!-- `software` listed under the name of the publisher or developer (CMOS18 14.169) -->
@@ -505,21 +551,21 @@
       </else-if>
       <else>
         <names variable="composer">
-          <name and="text" initialize-with=". " name-as-sort-order="false"/>
+          <name and="text" delimiter=", " initialize-with=". " name-as-sort-order="false"/>
           <substitute>
             <names variable="author">
-              <name and="text" initialize-with=". " name-as-sort-order="false"/>
+              <name and="text" delimiter=", " initialize-with=". " name-as-sort-order="false"/>
             </names>
             <names variable="guest">
-              <name and="text" initialize-with=". " name-as-sort-order="false"/>
+              <name and="text" delimiter=", " initialize-with=". " name-as-sort-order="false"/>
             </names>
             <names variable="host">
-              <name and="text" initialize-with=". " name-as-sort-order="false"/>
+              <name and="text" delimiter=", " initialize-with=". " name-as-sort-order="false"/>
             </names>
             <choose>
               <if type="song">
                 <names variable="performer">
-                  <name and="text" initialize-with=". " name-as-sort-order="false"/>
+                  <name and="text" delimiter=", " initialize-with=". " name-as-sort-order="false"/>
                 </names>
               </if>
             </choose>
@@ -528,10 +574,6 @@
                 <!-- note contributors fall after the title of `classic` (CMOS18 14.147), `performance` (CMOS18 14.166) -->
                 <text macro="author-title-substitute-short"/>
               </if>
-              <else-if type="broadcast" variable="container-title number title">
-                <!-- note contributors fall after the title of `broadcast` (CMOS18 14.165) -->
-                <text macro="author-title-substitute-container"/>
-              </else-if>
               <else-if match="any" type="broadcast motion_picture song">
                 <!-- note contributors fall after the title of `broadcast`, `motion_picture` (CMOS18 14.165), `song` (CMOS18 14.163)  -->
                 <text macro="author-title-substitute-short"/>
@@ -546,7 +588,7 @@
               </else-if>
             </choose>
             <names variable="illustrator">
-              <name and="text" initialize-with=". " name-as-sort-order="false"/>
+              <name and="text" delimiter=", " initialize-with=". " name-as-sort-order="false"/>
             </names>
             <choose>
               <!-- In multivolume works, notes list editors after the title of the part for which they are responsible (CMOS18 14.20-24); it appears also that editors should not be substituted for authors with chapters (cf. CMOS18 14.22) -->
@@ -554,16 +596,16 @@
               <else-if type="book" variable="container-title"/>
               <else>
                 <names variable="editor-translator">
-                  <name and="text" initialize-with=". " name-as-sort-order="false"/>
+                  <name and="text" delimiter=", " initialize-with=". " name-as-sort-order="false"/>
                 </names>
                 <names variable="editor">
-                  <name and="text" initialize-with=". " name-as-sort-order="false"/>
+                  <name and="text" delimiter=", " initialize-with=". " name-as-sort-order="false"/>
                 </names>
                 <names variable="translator">
-                  <name and="text" initialize-with=". " name-as-sort-order="false"/>
+                  <name and="text" delimiter=", " initialize-with=". " name-as-sort-order="false"/>
                 </names>
                 <names variable="collection-editor">
-                  <name and="text" initialize-with=". " name-as-sort-order="false"/>
+                  <name and="text" delimiter=", " initialize-with=". " name-as-sort-order="false"/>
                 </names>
               </else>
             </choose>
@@ -571,44 +613,44 @@
               <if type="broadcast" variable="container-title number title"/>
               <else>
                 <names variable="director">
-                  <name and="text" initialize-with=". " name-as-sort-order="false"/>
+                  <name and="text" delimiter=", " initialize-with=". " name-as-sort-order="false"/>
                 </names>
                 <names variable="producer">
-                  <name and="text" initialize-with=". " name-as-sort-order="false"/>
+                  <name and="text" delimiter=", " initialize-with=". " name-as-sort-order="false"/>
                 </names>
                 <names variable="executive-producer">
-                  <name and="text" initialize-with=". " name-as-sort-order="false"/>
+                  <name and="text" delimiter=", " initialize-with=". " name-as-sort-order="false"/>
                 </names>
                 <names variable="series-creator">
-                  <name and="text" initialize-with=". " name-as-sort-order="false"/>
+                  <name and="text" delimiter=", " initialize-with=". " name-as-sort-order="false"/>
                 </names>
                 <choose>
                   <if type="broadcast">
                     <names variable="contributor">
-                      <name and="text" initialize-with=". " name-as-sort-order="false"/>
+                      <name and="text" delimiter=", " initialize-with=". " name-as-sort-order="false"/>
                     </names>
                   </if>
                 </choose>
               </else>
             </choose>
             <names variable="editorial-director">
-              <name and="text" initialize-with=". " name-as-sort-order="false"/>
+              <name and="text" delimiter=", " initialize-with=". " name-as-sort-order="false"/>
             </names>
             <names variable="compiler">
-              <name and="text" initialize-with=". " name-as-sort-order="false"/>
+              <name and="text" delimiter=", " initialize-with=". " name-as-sort-order="false"/>
             </names>
             <choose>
               <if match="any" type="event performance speech">
                 <names variable="chair">
-                  <name and="text" initialize-with=". " name-as-sort-order="false"/>
+                  <name and="text" delimiter=", " initialize-with=". " name-as-sort-order="false"/>
                 </names>
                 <names variable="organizer">
-                  <name and="text" initialize-with=". " name-as-sort-order="false"/>
+                  <name and="text" delimiter=", " initialize-with=". " name-as-sort-order="false"/>
                 </names>
               </if>
             </choose>
             <names variable="curator">
-              <name and="text" initialize-with=". " name-as-sort-order="false"/>
+              <name and="text" delimiter=", " initialize-with=". " name-as-sort-order="false"/>
             </names>
             <text macro="author-title-substitute-container-short"/>
             <text macro="author-title-substitute-short"/>
@@ -1009,6 +1051,15 @@
             <text macro="source-bib"/>
           </group>
         </else-if>
+        <else-if type="article-journal">
+          <!-- Special format for journal articles -->
+          <group delimiter=", ">
+            <text macro="title-and-descriptions-bib"/>
+            <text macro="source-serial-name"/>
+            <text macro="source-serial-identifier-volume-bib"/>
+            <text macro="source-serial-locator"/>
+          </group>
+        </else-if>
         <else>
           <text macro="title-and-descriptions-bib"/>
           <text macro="source-bib"/>
@@ -1060,7 +1111,7 @@
             <text macro="title-and-part-filter-review-bib"/>
           </else>
         </choose>
-      </else-if>
+      </else>
       <else>
         <text macro="title-monographic-bib"/>
       </else>
@@ -2192,26 +2243,24 @@
         <if match="any" type="article-magazine article-newspaper">
           <!-- magazines and newspapers provide the full date in place of volume/issue numbers (CMOS18 14.87, 14.89) -->
           <group delimiter=", ">
-            <text macro="source-serial-title-bib"/>
+            <text macro="source-serial-name"/>
             <text macro="source-serial-identifier-bib"/>
           </group>
         </if>
-        <else-if variable="collection-title volume">
-          <group delimiter=", ">
-            <text macro="source-serial-title-bib"/>
-            <text macro="source-serial-identifier-bib"/>
-          </group>
-        </else-if>
-        <else-if variable="volume">
-          <group delimiter=" ">
-            <text macro="source-serial-title-bib"/>
-            <text macro="source-serial-identifier-bib"/>
+        <else-if match="any" variable="issue supplement-number volume">
+          <group delimiter=": ">
+            <text macro="source-serial-identifier-volume-bib"/>
+            <!-- for author-date: -->
+            <!-- <text macro="source-serial-identifier-volume-author-date"/> -->
+            <text macro="source-serial-locator"/>
           </group>
         </else-if>
         <else>
           <group delimiter=", ">
-            <text macro="source-serial-title-bib"/>
-            <text macro="source-serial-identifier-bib"/>
+            <text macro="source-serial-identifier-volume-bib"/>
+            <!-- for author-date: -->
+            <!-- <text macro="source-serial-identifier-volume-author-date"/> -->
+            <text macro="source-serial-locator"/>
           </group>
         </else>
       </choose>
@@ -2312,7 +2361,7 @@
     <group delimiter=", ">
       <choose>
         <if match="any" type="article-magazine article-newspaper">
-          <!-- magazines and newspapers provide the full date in place of volume/issue numbers (CMOS18 14.87, 14.89) -->
+          <!-- magazines and newspapers provide the full date in place of volume/issue numbers (CMOS14.87, 14.89) -->
           <text variable="collection-title"/>
           <text macro="source-serial-volume-status-bib"/>
         </if>
@@ -2331,44 +2380,54 @@
           </choose>
           <!-- `collection-title` is for any serial with multiple series (e.g. 'second series') -->
           <text variable="collection-title"/>
-          <group delimiter=" ">
-            <group delimiter=", ">
-              <choose>
-                <if variable="collection-title volume">
-                  <text macro="label-volume"/>
-                </if>
-                <else-if match="any" type="review review-book" variable="reviewed-author reviewed-genre reviewed-title">
-                  <!-- date appears first if a review `container-title` has been substituted for a missing author (CMOS18 14.87, 14.102) -->
-                  <choose>
-                    <if match="any" variable="author chair collection-editor compiler composer curator director editor editor-translator editorial-director executive-producer guest host illustrator organizer producer series-creator translator">
-                      <text variable="volume"/>
-                    </if>
-                    <else>
-                      <text macro="label-volume"/>
-                    </else>
-                  </choose>
-                </else-if>
-                <else>
-                  <text variable="volume"/>
-                </else>
-              </choose>
-              <text macro="label-issue"/>
-              <text macro="label-supplement-number"/>
-            </group>
+          <group delimiter=", ">
             <choose>
-              <if match="any" type="review review-book" variable="reviewed-author reviewed-genre reviewed-title">
-                <!-- date for unsigned reviews only appears here if it did not earlier (CMOS18 14.102) -->
+              <if variable="collection-title volume">
+                <group delimiter=" ">
+                  <text term="volume" form="short"/>
+                  <text variable="volume"/>
+                </group>
+              </if>
+              <else-if match="any" type="review review-book" variable="reviewed-author reviewed-genre reviewed-title">
+                <!-- date appears first if a review `container-title` has been substituted for a missing author (CMOS18 14.87, 14.102) -->
                 <choose>
                   <if match="any" variable="author chair collection-editor compiler composer curator director editor editor-translator editorial-director executive-producer guest host illustrator organizer producer series-creator translator">
-                    <text macro="source-date-bib" prefix="" suffix=""/>
+                    <text variable="volume"/>
                   </if>
+                  <else>
+                    <group delimiter=" ">
+                      <text term="volume" form="short"/>
+                      <text variable="volume"/>
+                    </group>
+                  </else>
                 </choose>
-              </if>
+              </else-if>
               <else>
-                <text macro="source-date-bib" prefix="" suffix=""/>
+                <group delimiter=" ">
+                  <text term="volume" form="short"/>
+                  <text variable="volume"/>
+                </group>
               </else>
             </choose>
+            <group delimiter=" ">
+              <text term="issue" form="short"/>
+              <text variable="issue"/>
+            </group>
+            <text macro="label-supplement-number"/>
           </group>
+          <choose>
+            <if match="any" type="review review-book" variable="reviewed-author reviewed-genre reviewed-title">
+              <!-- date for unsigned reviews only appears here if it did not earlier (CMOS18 14.102) -->
+              <choose>
+                <if match="any" variable="author chair collection-editor compiler composer curator director editor editor-translator editorial-director executive-producer guest host illustrator organizer producer series-creator translator">
+                  <text macro="source-date-bib" prefix="" suffix=""/>
+                </if>
+              </choose>
+            </if>
+            <else>
+              <text macro="source-date-bib" prefix="" suffix=""/>
+            </else>
+          </choose>
         </else-if>
         <else>
           <text variable="collection-title"/>
@@ -2411,6 +2470,19 @@
       </if>
       <!-- do not give pages for magazines or newspapers (CMOS18 14.87, 14.89) -->
       <else-if match="any" type="article-magazine article-newspaper"/>
+      <else-if variable="page">
+        <group delimiter=" ">
+          <text term="page" form="short"/>
+          <text variable="page"/>
+        </group>
+      </else-if>
+      <else-if match="any" type="article-journal">
+        <!-- 对于期刊文章，如果没有页码则显示页码标签 -->
+        <group delimiter=" ">
+          <text term="page" form="short"/>
+          <text variable="page"/>
+        </group>
+      </else-if>
       <else>
         <text variable="page"/>
       </else>

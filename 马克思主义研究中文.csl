@@ -161,7 +161,7 @@
   </citation>
   <bibliography entry-spacing="0" second-field-align="flush">
     <layout>
-      <text variable="citation-number" prefix="[" suffix="]"/>
+      <!-- <text variable="citation-number" prefix="[" suffix="]"/> -->
       <text macro="entry-layout" suffix="。"/>
     </layout>
   </bibliography>
